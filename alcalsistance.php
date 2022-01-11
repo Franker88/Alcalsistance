@@ -20,18 +20,22 @@
     $verfecha = mysqli_query($conn,"SELECT Fecha FROM fecha_condicional");
     $mostrarfecha = mysqli_fetch_array($verfecha);
 
-    if($mostrarfecha['Fecha'] != $fechaactual){
-        $actualizarfecha = mysqli_query($conn,"UPDATE fecha_condicional SET Fecha ='$fechaactual' WHERE id = 1");
-        $revisartrabajadores = mysqli_query($conn,"SELECT * FROM trabajadores WHERE Estado = 'Activo'");
-
-        if(mysqli_fetch_row($revisartrabajadores)>0){
-            $enumerar = mysqli_fetch_array($revisartrabajadores);
-
-            foreach($revisartrabajadores as $filaasistencia){
-                $cedulatrabinsert = $filaasistencia['cedula'];
-                $nombretrabinsert = $filaasistencia['Nombre'];
-                $apellidotrabinsert = $filaasistencia['Apellido'];
-                $queryasistencia = mysqli_query($conn,"INSERT INTO asistencia (cedula, Nombre, Apellido, Fecha, Estado_asistencia, Hora_entrada, Hora_salida, Justificacion) VALUES ('$cedulatrabinsert', '$nombretrabinsert', '$apellidotrabinsert', '$fechaactual', 'Ausente' ,'00:00:00','00:00:00', '')");
+    if(empty($mostrarfecha)){
+        $colocarfecha = mysqli_query($conn,"INSERT INTO fecha_condicional (id, Fecha) VALUE (1,'$fechaactual')");
+    }else{
+        if($mostrarfecha['Fecha'] != $fechaactual){
+            $actualizarfecha = mysqli_query($conn,"UPDATE fecha_condicional SET Fecha ='$fechaactual'");
+            $revisartrabajadores = mysqli_query($conn,"SELECT * FROM trabajadores WHERE Estado = 'Activo'");
+    
+            if(mysqli_fetch_row($revisartrabajadores)>0){
+                $enumerar = mysqli_fetch_array($revisartrabajadores);
+    
+                foreach($revisartrabajadores as $filaasistencia){
+                    $cedulatrabinsert = $filaasistencia['cedula'];
+                    $nombretrabinsert = $filaasistencia['Nombre'];
+                    $apellidotrabinsert = $filaasistencia['Apellido'];
+                    $queryasistencia = mysqli_query($conn,"INSERT INTO asistencia (cedula, Nombre, Apellido, Fecha, Estado_asistencia, Hora_entrada, Hora_salida, Justificacion) VALUES ('$cedulatrabinsert', '$nombretrabinsert', '$apellidotrabinsert', '$fechaactual', 'Ausente' ,'00:00:00','00:00:00', '')");
+                }
             }
         }
     }
