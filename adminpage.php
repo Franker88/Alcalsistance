@@ -79,7 +79,7 @@
     <div class="tabletitle">
         <h2 class="subtitle">Trabajadores Registrados</h2>
     </div>
-    <div class="mainer">
+    <div class="mainer tabler">
         <table>
             <thead>
                 <tr>
