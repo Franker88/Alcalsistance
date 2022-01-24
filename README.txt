@@ -90,6 +90,11 @@ embargo puede libremente colaborar o tomar parte del proyecto para mejorarlo com
 mejorando ciertos detalles sobre el programa, sea para configuraciones generales o un mejor control de las 
 cuentas y los trabajadores.
 
+***************************************************************************************
+Nota: El responsive está diseñado para 530 px como mínimo para poder ver el contenido de las tablas, si 
+piensa revisar la aplicación a través de tablets o smartphones se recomienda verlo en horizontal.
+***************************************************************************************
+
 Agradecido con su colaboración, espero les sea de utilidad el programa, para utilización o aprendizaje.
 Si desea comunicarse con el desarrollador puede visitar la siguiente página: 
 http://portfoliocafv.000webhostapp.com/ 
